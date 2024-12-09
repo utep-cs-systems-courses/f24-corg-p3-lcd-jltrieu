@@ -7,7 +7,7 @@ AS              = msp430-elf-gcc -mmcu=${CPU} -c
 
 all: project.elf
 
-project.elf: ${COMMON_OBJECTS} main.o
+project.elf: ${COMMON_OBJECTS} p2_interrupt_handler.o switches.o buzzer.o main.o
 	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^ -lTimer -lLcd
 
 load: project.elf
