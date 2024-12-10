@@ -19,7 +19,7 @@ void switch_init()
   P2OUT |= SWITCHES;
   P2DIR &= ~SWITCHES;
   switch_update_interrupt_sense();
-  buzzer_update();
+  buzzer_switch_update();
 }
 
 void switch_interrupt_handler()
@@ -28,5 +28,5 @@ void switch_interrupt_handler()
   switch_state_down = ~p2val & SWITCHES;
   switch_state_changed = 1;
   // just boilerplate for now, add function calls to other updates for updating
-  buzzer_update();
+  buzzer_switch_update();
 }

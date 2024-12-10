@@ -14,7 +14,7 @@ int main()
   switch_init();
   buzzer_init();
 
-  buzzer_set_period(0);
+  enableWDTInterrupts();
   clearScreen(COLOR_RED);
 
   or_sr(0x8); //GIE ON
