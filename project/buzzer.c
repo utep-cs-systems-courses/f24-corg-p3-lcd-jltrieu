@@ -24,7 +24,7 @@ void buzzer_set_period(short cycles)
 void buzzer_update()
 {
   if (switch_state_changed){
-    short cycles = 0;
+    static short cycles = 0;
     if (switch_state_down & SW1) cycles = 4211;
     if (switch_state_down & SW2) cycles = 2857;
     if (switch_state_down & SW3) cycles = 2222;
