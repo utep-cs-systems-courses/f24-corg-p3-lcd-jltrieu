@@ -13,6 +13,5 @@ project.elf: ${COMMON_OBJECTS} p2_interrupt_handler.o switches.o buzzer.o wdt_ha
 load: project.elf
 	msp430loader.sh $^
 
-
 clean:
 	rm -f *.o *.elf
