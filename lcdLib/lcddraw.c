@@ -94,6 +94,38 @@ void drawString5x7(u_char col, u_char row, char *string,
   }
 }
 
+void drawChar8x12(u_char rcol, u_char rrow, char c,
+		  u_int fgColorBGR, u_int bgColorBGR)
+{
+  u_char col = 0;
+  u_char row = 0;
+  u_char bit = 0x80; //leftmost bit
+  u_char oc = c - 0x20;
+
+  lcd_setArea(rcol, rrow, rcol + 7, rrow + 12);
+  while(row < 12) {// 12 rowse
+    while(col < 8) {//8 bits
+      u_int colorBGR = (font_8x12[oc][row] & bit) ? fgColorBGR : bgColorBGR;
+      lcd_writeColor(colorBGR);
+
+      bit >>= 1;
+      col++;
+    }
+    col = 0; //reset
+    bit = 0x80; // should be unnecessary but in case
+    row++; 
+  }
+}
+
+void drawString8x12(u_char col, u_char row, char *string,
+		    u_int fgColorBGR, u_int bgColorBGR)
+{
+  u_char cols = col;
+  while (*string){
+    drawChar8x12(cols, row, *string++, fgColorBGR, bgColorBGR);
+    cols += 9;
+  }
+}
 
 /** Draw rectangle outline
  *  

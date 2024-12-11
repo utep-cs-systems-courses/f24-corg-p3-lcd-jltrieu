@@ -39,7 +39,7 @@ short currentY = screenHeight/2; //start centered
 void update_shape()
 {
   //reuses buzzer state vars
-  drawString5x7(20, currentY, "jazz music :)", COLOR_RED, COLOR_RED); //clear the text
+  drawString8x12(10, currentY, "jazz music :)", COLOR_RED, COLOR_RED); //clear the text
   if(!buzzer_mode){
     currentY += 10;
   }
@@ -53,6 +53,6 @@ void update_shape()
   if(currentY <= 0){
     currentY = 1;
   }
-  drawString5x7(20, currentY, "jazz music :)", COLOR_WHITE, COLOR_RED);
+  drawString8x12(10, currentY, "jazz music :)", COLOR_WHITE, COLOR_RED);
   redrawScreen = 0;
 }
